@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#09090b" />
+    <title>Universal — Coming Soon</title>
+    <meta name="description" content="Universal is an anti-nuke and moderation bot for Discord. Coming soon." />
+    <link rel="canonical" href="https://universalbot.in/" />
+    <link rel="icon" type="image/png" href="https://universalbot.in/assets/universal-icon-transparent.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Universal" />
+    <meta property="og:url" content="https://universalbot.in/" />
+    <meta property="og:title" content="Universal — Protect your Discord server" />
+    <meta property="og:description" content="A Discord anti-nuke and moderation bot built to help keep your server safe, organized, and under control. Coming soon." />
+    <meta property="og:image" content="https://universalbot.in/assets/social-preview.png" />
+    <meta property="og:image:secure_url" content="https://universalbot.in/assets/social-preview.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Universal — Discord anti-nuke and moderation bot" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Universal — Protect your Discord server" />
+    <meta name="twitter:description" content="A Discord anti-nuke and moderation bot built to help keep your server safe, organized, and under control. Coming soon." />
+    <meta name="twitter:image" content="https://universalbot.in/assets/social-preview.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=3" />
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <main class="shell">
+      <nav class="nav animate-on-scroll" aria-label="Main navigation">
+        <a class="brand" href="#" aria-label="Universal home">
+          <span class="brand-mark"><img src="assets/universal-icon-transparent.png" alt="" /></span>
+          <span>Universal</span>
+        </a>
+
+        <a class="status" href="#notify" aria-label="Join waitlist">
+          <span class="status-dot"></span>
+          Launching soon
+        </a>
+      </nav>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="bot-logo animate-on-scroll" aria-hidden="true">
+          <span class="logo-orbit logo-orbit-one"></span>
+          <span class="logo-orbit logo-orbit-two"></span>
+          <div class="logo-frame"><img src="assets/universal-icon-transparent.png" alt="" /></div>
+        </div>
+
+        <div class="eyebrow animate-on-scroll reveal-delay-one">
+          <span class="eyebrow-icon">✦</span>
+          Discord anti-nuke &amp; moderation
+        </div>
+
+        <h1 id="hero-title" class="animate-on-scroll reveal-delay-two">Protect your server.<br /><span>Keep control.</span></h1>
+
+        <p class="subtitle animate-on-scroll reveal-delay-three">
+          Universal is an anti-nuke and moderation bot built to help keep your
+          Discord server safe, organized, and under control.
+        </p>
+
+        <form class="notify animate-on-scroll reveal-delay-four" id="notify">
+          <label class="sr-only" for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="Enter your email address" autocomplete="email" required />
+          <button type="submit">Notify me <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <footer class="animate-on-scroll">
+        <p class="animate-on-scroll">© <span id="year"></span> Universal</p>
+        <div class="footer-links animate-on-scroll reveal-delay-one">
+          <a href="#" aria-label="Discord community">Discord</a>
+          <a href="#" aria-label="Universal status">Status</a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js?v=3"></script>
+  </body>
+</html>
