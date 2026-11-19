@@ -1,6 +1,5 @@
 const form = document.querySelector("#notify");
 const emailInput = document.querySelector("#email");
-const consentInput = document.querySelector("#email-consent");
 const message = document.querySelector("#form-message");
 const submitButton = form.querySelector("button[type='submit']");
 
@@ -68,7 +67,6 @@ form.addEventListener("submit", (event) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       email: emailInput.value.trim(),
-      consent: consentInput.checked,
       website: form.elements.website.value
     })
   })
@@ -78,7 +76,7 @@ form.addEventListener("submit", (event) => {
       return result;
     })
     .then(() => {
-      message.textContent = "Thanks! We'll let you know when Universal launches.";
+      message.textContent = "Thanks! Your email was sent to our team.";
       form.reset();
     })
     .catch((error) => {

@@ -86,7 +86,7 @@ const server = http.createServer(async (request, response) => {
 
   const clientIp = getClientIp(request);
   if (!submissionsByIp.has(clientIp) && submissionsByIp.size >= 10000) {
-    sendJson(response, 503, { error: "Signups are temporarily busy. Please try again later." });
+    sendJson(response, 503, { error: "Notifications are temporarily busy. Please try again later." });
     return;
   }
   if (isRateLimited(clientIp)) {
@@ -129,16 +129,15 @@ const server = http.createServer(async (request, response) => {
   if (
     typeof submission.email !== "string" ||
     submission.email.length > 254 ||
-    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(submission.email.trim()) ||
-    submission.consent !== true
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(submission.email.trim())
   ) {
-    sendJson(response, 400, { error: "Enter a valid email and agree to the launch update notice." });
+    sendJson(response, 400, { error: "Please enter a valid email address." });
     return;
   }
 
   const webhookUrl = getWebhookUrl();
   if (!webhookUrl) {
-    sendJson(response, 503, { error: "Email signups are temporarily unavailable. Please try again later." });
+    sendJson(response, 503, { error: "Email notifications are temporarily unavailable. Please try again later." });
     return;
   }
 
@@ -149,10 +148,10 @@ const server = http.createServer(async (request, response) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         embeds: [{
-          title: "New Universal launch signup",
+          title: "Universal launch notification request",
           color: 0x9b87f5,
           fields: [{ name: "Email address", value: email }],
-          footer: { text: "Submitted with consent through universalbot.in" },
+          footer: { text: "Sent from the Notify me form on universalbot.in" },
           timestamp: new Date().toISOString()
         }]
       }),
@@ -160,11 +159,11 @@ const server = http.createServer(async (request, response) => {
     });
 
     if (!webhookResponse.ok) {
-      sendJson(response, 502, { error: "Couldn't deliver your signup. Please try again later." });
+      sendJson(response, 502, { error: "Couldn't send your notification request. Please try again later." });
       return;
     }
   } catch {
-    sendJson(response, 502, { error: "Couldn't deliver your signup. Please try again later." });
+    sendJson(response, 502, { error: "Couldn't send your notification request. Please try again later." });
     return;
   }
 
@@ -175,7 +174,7 @@ server.requestTimeout = 10000;
 server.headersTimeout = 10000;
 
 server.listen(port, host, () => {
-  console.log(`Signup endpoint listening on ${host}:${port}`);
+  console.log(`Notification endpoint listening on ${host}:${port}`);
 });
 
 server.on("error", (error) => {

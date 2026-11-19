@@ -301,26 +301,12 @@ h1 span {
 
 .notify input[type="email"]::placeholder { color: #777783; }
 
-.consent {
-  display: flex;
-  grid-column: 1 / -1;
-  align-items: flex-start;
-  gap: 9px;
-  padding: 8px 12px 4px;
+.privacy-note {
+  margin: 12px 0 0;
   color: #92919f;
-  text-align: left;
+  text-align: center;
   font-size: 12px;
   line-height: 1.5;
-  cursor: pointer;
-}
-
-.consent input {
-  width: 15px;
-  height: 15px;
-  flex: 0 0 15px;
-  margin: 1px 0 0;
-  accent-color: #9b87f5;
-  cursor: pointer;
 }
 
 .form-trap {
@@ -414,7 +400,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .notify { grid-template-columns: 1fr; }
   .notify input[type="email"] { height: 46px; }
   .notify button { width: 100%; }
-  .consent { grid-column: 1; }
   footer { height: 68px; }
 }
 
