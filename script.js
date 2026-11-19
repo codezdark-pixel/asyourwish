@@ -1,6 +1,8 @@
 const form = document.querySelector("#notify");
 const emailInput = document.querySelector("#email");
+const consentInput = document.querySelector("#email-consent");
 const message = document.querySelector("#form-message");
+const submitButton = form.querySelector("button[type='submit']");
 
 document.querySelector("#year").textContent = new Date().getFullYear();
 
@@ -54,14 +56,38 @@ window.addEventListener("scroll", () => {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  if (!emailInput.checkValidity()) {
-    emailInput.reportValidity();
+  if (!form.reportValidity()) {
     return;
   }
 
-  message.textContent = "You're on the list — we'll be in touch.";
-  message.classList.remove("is-visible");
-  void message.offsetWidth;
-  message.classList.add("is-visible");
-  form.reset();
+  submitButton.disabled = true;
+  message.textContent = "Submitting...";
+
+  fetch("/api/notify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: emailInput.value.trim(),
+      consent: consentInput.checked,
+      website: form.elements.website.value
+    })
+  })
+    .then(async (response) => {
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || "Couldn't submit your email. Please try again.");
+      return result;
+    })
+    .then(() => {
+      message.textContent = "Thanks! We'll let you know when Universal launches.";
+      form.reset();
+    })
+    .catch((error) => {
+      message.textContent = error.message || "Couldn't submit your email. Please try again.";
+    })
+    .finally(() => {
+      submitButton.disabled = false;
+      message.classList.remove("is-visible");
+      void message.offsetWidth;
+      message.classList.add("is-visible");
+    });
 });

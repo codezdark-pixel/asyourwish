@@ -289,7 +289,7 @@ h1 span {
 .notify { transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease; }
 .notify:hover { border-color: rgba(155, 135, 245, 0.22); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28), 0 0 30px rgba(133, 107, 255, 0.06); }
 
-.notify input {
+.notify input[type="email"] {
   min-width: 0;
   border: 0;
   outline: 0;
@@ -299,7 +299,38 @@ h1 span {
   font: 500 15px "DM Sans", sans-serif;
 }
 
-.notify input::placeholder { color: #777783; }
+.notify input[type="email"]::placeholder { color: #777783; }
+
+.consent {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 8px 12px 4px;
+  color: #92919f;
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.consent input {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  margin: 1px 0 0;
+  accent-color: #9b87f5;
+  cursor: pointer;
+}
+
+.form-trap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
 
 .notify button {
   height: 46px;
@@ -316,6 +347,7 @@ h1 span {
 .notify button span { margin-left: 6px; }
 .notify button:hover { background: #fff; transform: translateY(-1px); }
 .notify button:active { transform: translateY(0); }
+.notify button:disabled { cursor: wait; opacity: 0.72; }
 
 .form-message { min-height: 20px; margin: 12px 0 0; color: #aaa1d4; font-size: 13px; }
 .form-message.is-visible { animation: messagePop 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
@@ -380,8 +412,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   h1 { font-size: clamp(44px, 14vw, 62px); }
   .subtitle { margin-top: 20px; }
   .notify { grid-template-columns: 1fr; }
-  .notify input { height: 46px; }
+  .notify input[type="email"] { height: 46px; }
   .notify button { width: 100%; }
+  .consent { grid-column: 1; }
   footer { height: 68px; }
 }
 
