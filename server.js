@@ -178,6 +178,6 @@ server.listen(port, host, () => {
 });
 
 server.on("error", (error) => {
-  console.error("Signup endpoint failed to start:", error.message);
+  console.error("Notification endpoint failed to start:", error.message);
   process.exitCode = 1;
 });
